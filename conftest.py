@@ -25,6 +25,6 @@ def browser(request):
         options_firefox.set_preference("intl.accept_languages", user_language)
         browser = webdriver.Firefox(options=options_firefox)
     browser.maximize_window()
-    browser.implicitly_wait(5)
+    # browser.implicitly_wait(5)
     yield browser
     browser.quit()
