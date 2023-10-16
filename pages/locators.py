@@ -32,6 +32,6 @@ class ProductPageLocators:
 
 
 class BasketPageLocators:
-    TOP_BASKET_BUTTON = (By.CSS_SELECTOR, "a[class='btn btn-default']")
+    TOP_BASKET_BUTTON = (By.CSS_SELECTOR, ".btn-group")
     ITEMS_TO_BY = (By.CSS_SELECTOR, "#content_inner .col-sm-6.h3")
     EMPTY_BASKET_TEXT = (By.CSS_SELECTOR, "#content_inner")
