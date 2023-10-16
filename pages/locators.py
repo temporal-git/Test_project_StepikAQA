@@ -29,3 +29,9 @@ class ProductPageLocators:
     PRODUCT_NAME = (By.CSS_SELECTOR, ".product_main h1")
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
     BASKET_TOTAL = (By.CSS_SELECTOR, ".basket-mini ")
+
+
+class BasketPageLocators:
+    TOP_BASKET_BUTTON = (By.CSS_SELECTOR, "a[class='btn btn-default']")
+    ITEMS_TO_BY = (By.CSS_SELECTOR, "#content_inner .col-sm-6.h3")
+    EMPTY_BASKET_TEXT = (By.CSS_SELECTOR, "#content_inner")
