@@ -63,13 +63,3 @@ class BasePage:
     def should_be_authorized_user(self):
         assert self.is_element_present(*BasePageLocators.USER_ICON), ("User icon is not presented, probably "
                                                                       "unauthorised user")
-    # from faker import Faker
-    # def new_user_name_abd_email_generator(self):
-    #     """
-    #     Method generates random name, email, and password for registration.
-    #     """
-    #     f = Faker()
-    #     email = f.email()
-    #     name = f.name()
-    #     password = f.passport_number() + "!"
-    #     return {"name": name, "email": email, "password": password}
