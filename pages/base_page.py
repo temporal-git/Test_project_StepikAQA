@@ -1,14 +1,14 @@
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from .locators import BasePageLocators
 import math
+from faker import Faker
 
 
 class BasePage:
-    def __init__(self, browser, url, timeout=5):
+    def __init__(self, browser, url, timeout=4):
         self.browser = browser
         self.url = url
         self.browser.implicitly_wait(timeout)
@@ -60,3 +60,17 @@ class BasePage:
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    # def new_user_name_abd_email_generaror(self):
+    #     """
+    #     Method generates random name, email, and password for registration.
+    #     """
+    #     f = Faker()
+    #     email = f.email()
+    #     name = f.name()
+    #     password = f.passport_number() + "!"
+    #     return {"name": name, "email": email, "password": password}
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), ("User icon is not presented, probably "
+                                                                      "unauthorised user")

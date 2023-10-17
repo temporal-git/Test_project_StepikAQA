@@ -2,6 +2,7 @@ from .pages.product_page import ProductPage
 from .pages.login_page import LoginPage
 from .pages.basket_page import BasketPage
 import pytest
+from faker import Faker
 
 
 @pytest.mark.skip
@@ -84,3 +85,31 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     basket.go_to_basket_page()
     basket.check_is_basket_is_empty()
     basket.check_text_is_basket_empty()
+
+
+class TestUserAddToBasketFromProductPage:
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        link = "https://selenium1py.pythonanywhere.com/accounts/login/"
+        email = Faker().email()
+        password = Faker().passport_number() + "!"
+        login = LoginPage(browser, link)
+        login.open()
+        login.register_new_user(email, password)
+        login.should_be_authorized_user()
+
+    def test_user_cant_see_success_message(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+        prod_page = ProductPage(browser, link)
+        prod_page.open()
+        prod_page.should_not_be_success_message()
+
+    @pytest.mark.need_review
+    def test_user_can_add_product_to_basket(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/coders-at-work_207/?promo=newYear2019"
+        prod_page = ProductPage(browser, link)
+        prod_page.open()
+        prod_page.should_not_be_success_message()
+        prod_page.add_product_to_basket()
+        prod_page.solve_quiz_and_get_code()
+        prod_page.should_add_prodict_successful()
