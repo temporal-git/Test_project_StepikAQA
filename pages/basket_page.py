@@ -11,4 +11,5 @@ class BasketPage(BasePage):
 
     def check_text_is_basket_empty(self):
         expected_text = self.browser.find_element(*BasketPageLocators.EMPTY_BASKET_TEXT).text
-        assert expected_text == "Your basket is empty. Continue shopping", "The text about the basket being empty is missing."
+        assert expected_text == "Your basket is empty. Continue shopping", ("The text about the basket being empty is "
+                                                                            "missing.")

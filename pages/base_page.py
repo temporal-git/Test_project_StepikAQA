@@ -4,7 +4,6 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from .locators import BasePageLocators
 import math
-from faker import Faker
 
 
 class BasePage:
@@ -61,7 +60,11 @@ class BasePage:
         except NoAlertPresentException:
             print("No second alert presented")
 
-    # def new_user_name_abd_email_generaror(self):
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), ("User icon is not presented, probably "
+                                                                      "unauthorised user")
+    # from faker import Faker
+    # def new_user_name_abd_email_generator(self):
     #     """
     #     Method generates random name, email, and password for registration.
     #     """
@@ -70,7 +73,3 @@ class BasePage:
     #     name = f.name()
     #     password = f.passport_number() + "!"
     #     return {"name": name, "email": email, "password": password}
-
-    def should_be_authorized_user(self):
-        assert self.is_element_present(*BasePageLocators.USER_ICON), ("User icon is not presented, probably "
-                                                                      "unauthorised user")
