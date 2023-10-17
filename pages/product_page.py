@@ -14,8 +14,8 @@ class ProductPage(BasePage):
 
     def should_notice_content_product_success_message(self):
         product_name = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME).text
-        success_message = self.browser.find_element(*ProductPageLocators.NOTICE_PRODUCT_ADD_SUCCESSFUL).text
-        assert product_name in success_message, "Wrong successful notice text"
+        alert_name = self.browser.find_element(*ProductPageLocators.ALERT_NAME_PRODUCT).text
+        assert alert_name == product_name, "Wrong successful notice text"
 
     def should_total_price_go_up(self):
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text

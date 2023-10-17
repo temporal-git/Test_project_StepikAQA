@@ -30,6 +30,7 @@ class ProductPageLocators:
     PRODUCT_NAME = (By.CSS_SELECTOR, ".product_main h1")
     PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main .price_color")
     BASKET_TOTAL = (By.CSS_SELECTOR, ".basket-mini ")
+    ALERT_NAME_PRODUCT = (By.CSS_SELECTOR, ".alert:nth-child(1) strong")
 
 
 class BasketPageLocators:
